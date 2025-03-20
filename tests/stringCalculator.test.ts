@@ -38,4 +38,8 @@ describe("String Calculator", () => {
     expect(add("2,1001,3")).toBe(5);
     expect(add("//;\n1002;2;1001;3")).toBe(5);
   });
+
+  it("should allow delimiters of any length when wrapped in square brackets", () => {
+    expect(add("//[***]\n1***2***3")).toBe(6);
+  });
 });
