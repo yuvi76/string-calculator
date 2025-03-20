@@ -26,4 +26,11 @@ describe("String Calculator", () => {
     expect(add("//;\n1;2;3")).toBe(6);
     expect(add("//@\n2@3@4")).toBe(9);
   });
+
+  it("should throw an error if negatives are present", () => {
+    expect(() => add("1,-2,3")).toThrow("negatives not allowed: -2");
+    expect(() => add("//;\n2;-5;6;-1")).toThrow(
+      "negatives not allowed: -5, -1"
+    );
+  });
 });
