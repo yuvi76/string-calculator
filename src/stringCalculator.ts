@@ -4,16 +4,9 @@ export function add(numbers: string): number {
     return 0;
   }
 
-  // 2. If the input is a single number, return the number itself
-  if (!numbers.includes(",")) {
-    return parseInt(numbers);
-  }
-
-  // 3. If the input is two numbers separated by a comma, return the sum
-  // 4. If the input is an unknown amount of numbers separated by a comma, return the sum
-  if (numbers.includes(",")) {
-    return numbers.split(",").reduce((acc, num) => acc + parseInt(num), 0);
-  }
-
-  return parseInt(numbers);
+  // Replace newlines with commas so we can split on a single delimiter
+  const unified = numbers.replace(/\n/g, ",");
+  const parts = unified.split(",");
+  const ints = parts.map(str => parseInt(str, 10) || 0);
+  return ints.reduce((acc, curr) => acc + curr, 0);
 }
