@@ -10,6 +10,7 @@ export function add(numbers: string): number {
   }
 
   // 3. If the input is two numbers separated by a comma, return the sum
+  // 4. If the input is an unknown amount of numbers separated by a comma, return the sum
   if (numbers.includes(",")) {
     return numbers.split(",").reduce((acc, num) => acc + parseInt(num), 0);
   }
