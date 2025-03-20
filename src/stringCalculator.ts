@@ -27,5 +27,6 @@ export function add(numbers: string): number {
   if (negatives.length > 0) {
     throw new Error(`negatives not allowed: ${negatives.join(", ")}`);
   }
-  return ints.reduce((acc, curr) => acc + curr, 0);
+
+  return ints.filter((num) => num <= 1000).reduce((acc, curr) => acc + curr, 0);
 }
