@@ -3,5 +3,11 @@ export function add(numbers: string): number {
   if (!numbers) {
     return 0;
   }
+
+  // 2. If the input is a single number, return the number itself
+  if (!numbers.includes(",")) {
+    return parseInt(numbers);
+  }
+
   return parseInt(numbers);
 }
