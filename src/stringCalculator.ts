@@ -21,5 +21,11 @@ export function add(numbers: string): number {
   // But if we have a custom delimiter in 'delimiter', we can do a split via that
   const parts = input.split(delimiter);
   const ints = parts.map(str => parseInt(str, 10) || 0);
+
+  // Collect negatives
+  const negatives = ints.filter((num) => num < 0);
+  if (negatives.length > 0) {
+    throw new Error(`negatives not allowed: ${negatives.join(", ")}`);
+  }
   return ints.reduce((acc, curr) => acc + curr, 0);
 }
