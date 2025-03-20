@@ -13,14 +13,15 @@ export function add(numbers: string): number {
     const customDelimiter = numbers.substring(2, newlineIndex);
     input = numbers.substring(newlineIndex + 1);
 
-    const bracketRegex = /\[([^\]]+)\]/;
-    const match = bracketRegex.exec(customDelimiter);
-
-    if (match) {
-      // e.g. [***]
+    const bracketRegex = /\[([^\]]+)\]/g;
+    let match;
+    // Keep extracting until no more bracketed delimiters
+    while ((match = bracketRegex.exec(customDelimiter)) !== null) {
       delimiters.push(match[1]);
-    } else {
-      // single char
+    }
+
+    // If we found nothing in brackets, fallback to single char
+    if (delimiters.length === 2) {
       delimiters.push(customDelimiter);
     }
   }
