@@ -42,4 +42,9 @@ describe("String Calculator", () => {
   it("should allow delimiters of any length when wrapped in square brackets", () => {
     expect(add("//[***]\n1***2***3")).toBe(6);
   });
+
+  it("should allow multiple custom delimiters", () => {
+    expect(add("//[*][%]\n1*2%3")).toBe(6);
+    expect(add("//[aa][bbb]\n1aa2bbb3")).toBe(6);
+  });
 });
